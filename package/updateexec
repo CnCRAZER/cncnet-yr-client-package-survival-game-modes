@@ -501,6 +501,9 @@ Maps\Yuri's Revenge\2_lucky_luke_precaptured.png
 Maps\Yuri's Revenge\4_pioneer_peak_ra2.map
 Maps\Yuri's Revenge\4_pioneer_peak_ra2.png
 INI\Game Options\Brutal AI.ini
+Resources\Binaries\Windows\Rampastring.Tools.dll
+Resources\Binaries\XNA\Rampastring.Tools.dll
+Resources\Binaries\OpenGL\Rampastring.Tools.dll
 
 [DeleteFolder]
 Maps\Yuri's Revenge\CTF
