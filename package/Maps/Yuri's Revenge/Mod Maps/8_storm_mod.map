@@ -1,6 +1,6 @@
 ; [8] Storm (Author's Mod)
 ; Created by CCCP84 (Andrey Lesiak) in 2016 with FinalAlert 2
-; Map Version: 5.5 for CNCNET
+; Map Version: 5.6 for CNCNET
 
 [Header]
 Width=173
@@ -22,25 +22,26 @@ AttackCursorOnDisguise=1
 MaximumQueuedObjects=49
 PurifierBonus=.2
 SpyPowerBlackout=3000
-V3RocketPitchFinal=0.4
-VeteranRatio=4
+V3RocketPitchFinal=.4
+VeteranRatio=5
 
 [CrateRules]
 CrateMaximum=1
 CrateRegen=5
 
 [Powerups]
-Unit=60,<none>,no
-Armor=10,ARMOR,yes,1.5
-Money=4,MONEY,yes,2000
-Speed=10,SPEED,yes,1.2
-Reveal=1,REVEAL,yes
-Veteran=10,VETERAN,yes,1
-HealBase=5,HEALALL,yes
-Firepower=10,FIREPOWR,yes,2.0
+Unit=60,<none>,0
+Armor=10,ARMOR,1,1.5
+Money=0,MONEY,0,2000
+Speed=10,SPEED,1,1.2
+Reveal=1,REVEAL,1
+Veteran=14,VETERAN,1,1
+HealBase=5,HEALALL,1
+Firepower=10,FIREPOWR,1,2.0
 
 [Warheads]
 90=PATMS
+92=MT
 
 ;   ========== vehicles ==========
 
@@ -84,10 +85,10 @@ Range=10
 Range=11
 
 [UltraAP]
-Verses=8%,8%,8%,100%,40%,100%,8%,8%,8%,8%,100%
+Verses=8%,8%,8%,100%,40%,100%,8%,8%,8%,8%,0%
 
 [UltraAPE]
-Verses=8%,8%,8%,100%,50%,100%,8%,8%,8%,100%,100%
+Verses=8%,8%,8%,100%,50%,100%,8%,8%,8%,100%,0%
 
 [FV]
 CrateGoodie=1
@@ -100,8 +101,6 @@ Range=8
 Range=7
 
 [APOC]
-Cost=1700
-Soylent=1700
 NavalTargeting=5
 
 [120mmx]
@@ -111,15 +110,22 @@ Range=7
 Range=7
 
 [ApocAP]
-Verses=100%,100%,100%,75%,100%,100%,100%,100%,70%,60%,100%
-CellSpread=1
+CellSpread=.7
+Verses=100%,100%,100%,75%,100%,100%,100%,100%,70%,60%,0%
 
 [ApocAPE]
-CellSpread=1
+CellSpread=.7
 
 [MammothTusk]
+Damage=40
 Range=10
-Warhead=PATMS
+Warhead=MT
+
+[MT]
+CellSpread=.9
+PercentAtMax=.5
+Verses=100%,0%,0%,100%,0%,0%,0%,0%,0%,0%,100%
+AnimList=XGRYSML1,XGRYSML2,EXPLOSML
 
 [HTNK]
 Cost=850
@@ -171,6 +177,7 @@ Soylent=400
 Cost=2000
 Strength=320
 CrateGoodie=1
+Prerequisite=NAWEAP,NATECH
 
 [Demobomb]
 Damage=800
@@ -191,6 +198,7 @@ PercentAtMax=.04
 Cost=1200
 Soylent=1200
 NavalTargeting=5
+EliteSecondary=MammothTusk
 
 [HOWI]
 Cost=3000
@@ -235,6 +243,7 @@ Range=9
 Range=12
 
 [SHAD]
+Cost=2000
 CrateGoodie=1
 NavalTargeting=5
 
@@ -250,6 +259,7 @@ CanPassiveAquire=1
 [CARRIER]
 Cost=3000
 NavalTargeting=5
+Prerequisite=GAYARD,GATECH
 
 [HORNET]
 Cost=5
@@ -301,7 +311,7 @@ Warhead=FlakWH
 Projectile=FlakProj
 
 [SQD]
-SensorsSight=10
+SensorsSight=12
 
 [SquidPunch]
 Damage=95
@@ -335,18 +345,17 @@ Range=8
 CanTargetHouses=enemy
 
 [JUMPJET]
-Cost=800
 NavalTargeting=5
 
 [SSA]
-Verses=100%,100%,70%,60%,40%,40%,75%,50%,25%,100%,40%
+Verses=100%,100%,70%,60%,40%,40%,75%,50%,25%,100%,50%
 
 [TANY]
 Pip=red
 Soylent=500
 
 [HollowPoint]
-Verses=200%,100%,100%,0%,0%,0%,0%,0%,0%,0%,100%
+Verses=200%,100%,100%,0%,0%,0%,0%,0%,0%,0%,0%
 
 [SNIPE]
 Cost=1800
@@ -360,12 +369,15 @@ Range=25
 Range=25
 
 [HollowPointNoBuilding]
-Verses=200%,100%,75%,0%,0%,0%,0%,0%,0%,15%,100%
+Verses=200%,100%,75%,0%,0%,0%,0%,0%,0%,15%,0%
 
 [SPY]
 Pip=blue
 Cost=2000
 Soylent=1000
+
+[CCOMAND]
+Bombable=0
 
 [E2]
 Pip=white
@@ -421,7 +433,6 @@ Primary=MakeupKit
 Strength=100
 Secondary=TerrorBomb
 ImmuneToRadiation=1
-CanRetaliate=0
 
 [TerrorBomb]
 Damage=300
@@ -440,7 +451,8 @@ RequiredHouses=YuriCountry
 
 [YURIPRRA2]
 Pip=red
-Cost=4000
+Cost=5000
+Soylent=2000
 Name=Yuri Prime
 Size=1
 Armor=flak
@@ -452,7 +464,6 @@ Points=50
 UIName=Name:YURIPR
 IFVMode=8
 Primary=SuperMindControlRA2
-Soylent=1000
 Category=Soldier
 Deployer=1
 DieSound=YuriDie
@@ -499,7 +510,13 @@ Pip=red
 Soylent=500
 NavalTargeting=5
 
+[CIVAN]
+Bombable=0
+
 ;   ========== buildings ==========
+
+[GATECH]
+Cost=3500
 
 [GAOREP]
 Cost=3000
@@ -511,14 +528,20 @@ Cost=2000
 [GAGAP]
 Cost=1500
 
-[NATECH]
-Cost=1800
+[GAYARD]
+Cost=2000
 
-[NARADR]
-Cost=800
+[NATECH]
+Cost=2800
+
+[NANRCT]
+Cost=1500
 
 [NADEPT]
 Cost=600
+
+[NAYARD]
+Cost=2000
 
 [NAPSIS]
 FreeUnit=LIMO
@@ -543,7 +566,10 @@ SensorsSight=18
 Insignificant=0
 ImmuneToRadiation=1
 
-[NACLON]
+[YATECH]
+Cost=2800
+
+[YAYARD]
 Cost=2000
 
 [ATESLA]
@@ -569,11 +595,9 @@ Range=14
 Warhead=PATMS
 
 [PATMS]
-Verses=100%,100%,100%,100%,100%,100%,0%,0%,0%,100%,100%
+Verses=100%,0%,0%,100%,0%,0%,0%,0%,0%,0%,100%
 AnimList=XGRYSML1,XGRYSML2,EXPLOSML
-InfDeath=3
 CellSpread=1.4
-ProneDamage=100%
 PercentAtMax=.01
 
 [GTGCAN]
@@ -14764,14 +14788,14 @@ MaxPlayer=8
 NewINIFormat=4
 
 [Events]
-01000000=1,13,0,0
-01000002=1,13,0,0
-01000003=1,13,0,0
-01000005=1,13,0,0
-01000007=1,13,0,0
-01000009=1,13,0,0
-01000011=1,13,0,0
-01000013=1,13,0,0
+01000000=1,8,0,0
+01000002=1,8,0,0
+01000003=1,8,0,0
+01000005=1,8,0,0
+01000007=1,8,0,0
+01000009=1,8,0,0
+01000011=1,8,0,0
+01000013=1,8,0,0
 
 [IsoMapPack5]
 1=HQ8AIAOZAFIAHQCAAAKZAFMAHYQBAQB6AKcoKQCo6wE/AMIoKQDD6wH/AMUoKQDGKCkAx+sB9A
@@ -20553,10 +20577,10 @@ LocalSize=2,4,174,194
 69=Neutral,CABHUT,256,261,155,64,None,1,0,1,0,0,None,None,None,0,0
 70=Neutral,CABHUT,256,293,197,64,None,1,0,1,0,0,None,None,None,0,0
 71=Neutral,CABHUT,256,281,191,64,None,1,0,1,0,0,None,None,None,0,0
-72=Neutral,CAOILD,256,235,231,64,None,1,0,1,0,0,None,None,None,0,0
-73=Neutral,CAOILD,256,237,236,64,None,1,0,1,0,0,None,None,None,0,0
-74=Neutral,CAOILD,256,122,127,64,None,1,0,1,0,0,None,None,None,0,0
-75=Neutral,CAOILD,256,118,124,64,None,1,0,1,0,0,None,None,None,0,0
+72=Neutral,CAOILD,256,235,231,64,01000008,1,0,1,0,0,None,None,None,0,0
+73=Neutral,CAOILD,256,237,236,64,01000008,1,0,1,0,0,None,None,None,0,0
+74=Neutral,CAOILD,256,122,127,64,01000004,1,0,1,0,0,None,None,None,0,0
+75=Neutral,CAOILD,256,118,124,64,01000004,1,0,1,0,0,None,None,None,0,0
 76=Neutral,CAMISC01,256,34,185,64,None,1,0,1,0,0,None,None,None,0,0
 77=Neutral,CAMISC02,256,35,186,64,None,1,0,1,0,0,None,None,None,0,0
 78=Neutral,CAMISC01,256,191,51,64,None,1,0,1,0,0,None,None,None,0,0
@@ -20569,7 +20593,7 @@ LocalSize=2,4,174,194
 85=Neutral,GASPYSAT,256,195,271,64,None,1,0,1,0,0,None,None,None,0,0
 
 [Tags]
-01000060=0,1,01000002
+01000001=0,R,01000002
 
 [Terrain]
 44186=TREE19
@@ -21572,7 +21596,7 @@ LocalSize=2,4,174,194
 
 [Triggers]
 01000000=Arabs,01000003,S01,0,1,1,1,0
-01000002=Arabs,01000000,1,0,1,1,1,0
+01000002=Arabs,01000000,R,0,1,1,1,0
 01000003=Arabs,01000005,S02,0,1,1,1,0
 01000005=Arabs,01000007,S03,0,1,1,1,0
 01000007=Arabs,01000009,S04,0,1,1,1,0

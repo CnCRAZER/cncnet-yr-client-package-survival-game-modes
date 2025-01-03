@@ -1,6 +1,6 @@
 ; [8] Black Sea (Author's Mod)
 ; Created by CCCP84 (Andrey Lesiak) in 2020 with FinalAlert 2
-; Map Version: 5.5 for CNCNET
+; Map Version: 5.6 for CNCNET
 ; Based on map "Diamond Quarry"
 ; Special Thanks to McPwny
 
@@ -22,15 +22,17 @@ NumberStartingPoints=8
 [General]
 AttackCursorOnDisguise=1
 DMislAltitude=1196
-DMislTurnRate=0.1
+DMislTurnRate=.1
 PurifierBonus=.2
-VeteranRatio=4
+SpyPowerBlackout=1500
+VeteranRatio=5
 
 [CrateRules]
 CrateMaximum=1
 
 [Warheads]
-90=PATMS
+91=PATMS
+92=MT
 
 ;   ========== vehicles ==========
 
@@ -66,30 +68,35 @@ Range=8
 Range=9
 
 [UltraAP]
-Verses=8%,8%,8%,100%,40%,100%,8%,8%,8%,8%,100%
+Verses=8%,8%,8%,100%,40%,100%,8%,8%,8%,8%,0%
 
 [UltraAPE]
-Verses=8%,8%,8%,100%,50%,100%,8%,8%,8%,100%,100%
+Verses=8%,8%,8%,100%,50%,100%,8%,8%,8%,100%,0%
 
 [FV]
 CrateGoodie=1
 NavalTargeting=5
 
-[HollowPoint]
-Verses=200%,100%,100%,0%,0%,0%,0%,0%,0%,0%,100%
-
 [APOC]
 NavalTargeting=5
 
 [ApocAP]
-Verses=100%,100%,100%,75%,100%,100%,100%,100%,70%,60%,100%
-CellSpread=1
+CellSpread=.7
+Verses=100%,100%,100%,75%,100%,100%,100%,100%,70%,60%,0%
 
 [ApocAPE]
-CellSpread=1
+CellSpread=.7
 
 [MammothTusk]
-Warhead=PATMS
+Damage=40
+Range=10
+Warhead=MT
+
+[MT]
+CellSpread=.7
+PercentAtMax=.5
+Verses=100%,0%,0%,100%,0%,0%,0%,0%,0%,0%,100%
+AnimList=XGRYSML1,XGRYSML2,EXPLOSML
 
 [HTNK]
 NavalTargeting=5
@@ -124,8 +131,13 @@ Strength=76
 [V3EWH]
 AnimList=VTEXPLOD
 
+[DRON]
+Cost=400
+Soylent=400
+
 [HARV]
 NavalTargeting=5
+EliteSecondary=MammothTusk
 
 [STANG]
 Cost=200
@@ -266,6 +278,7 @@ OpportunityFire=1
 
 [CARRIER]
 NavalTargeting=5
+Prerequisite=GAYARD,GATECH
 
 [HORNET]
 Cost=5
@@ -274,6 +287,9 @@ NavalTargeting=5
 
 [ASW]
 Cost=5
+
+[DLPH]
+CrateGoodie=1
 
 [SonicWarhead]
 Verses=0%,100%,0%,100%,0%,80%,0%,0%,60%,0%,0%
@@ -309,7 +325,7 @@ Warhead=FlakWH
 Projectile=FlakProj
 
 [SQD]
-SensorsSight=6
+SensorsSight=10
 
 [SquidPunch]
 Damage=95
@@ -345,18 +361,27 @@ NavalTargeting=5
 Pip=red
 Soylent=500
 
+[HollowPoint]
+Verses=200%,100%,100%,0%,0%,0%,0%,0%,0%,0%,0%
+
 [SNIPE]
 Cost=1500
 Soylent=750
 Pip=red
 
 [HollowPointNoBuilding]
-Verses=200%,100%,75%,0%,0%,0%,0%,0%,0%,15%,100%
+Verses=200%,100%,75%,0%,0%,0%,0%,0%,0%,15%,0%
 
 [SPY]
 Pip=blue
-Cost=1500
-Soylent=750
+Cost=2000
+Soylent=1000
+
+[Snapshot]
+Verses=100%,100%,100%,0%,0%,0%,0%,0%,0%,0%,0%
+
+[CCOMAND]
+Bombable=0
 
 [E2]
 Pip=white
@@ -402,11 +427,10 @@ Primary=MakeupKit
 Strength=100
 Secondary=TerrorBomb
 ImmuneToRadiation=1
-CanRetaliate=0
 
 [TerrorBomb]
 Damage=300
-RadLevel=90
+RadLevel=200
 
 [TerrorBombWH]
 AnimList=XGRYSML1,XGRYSML2,EXPLOSML,XGRYMED1,XGRYMED2,EXPLOMED,EXPLOLRG,TWLT070
@@ -480,6 +504,9 @@ Pip=red
 Soylent=500
 NavalTargeting=5
 
+[CIVAN]
+Bombable=0
+
 ;   ========== buildings ==========
 
 [NAPSIS]
@@ -520,11 +547,9 @@ Cost=1200
 Warhead=PATMS
 
 [PATMS]
-Verses=100%,100%,100%,100%,100%,100%,0%,0%,0%,100%,100%
+Verses=100%,0%,0%,100%,0%,0%,0%,0%,0%,0%,100%
 AnimList=XGRYSML1,XGRYSML2,EXPLOSML
-InfDeath=3
 CellSpread=1.4
-ProneDamage=100%
 PercentAtMax=.01
 
 [GTGCAN]
@@ -18047,7 +18072,11 @@ AreTeamMembersRecruitable=no
 01000002=8,99,7,_Amb_WavesLake,0,0,0,0,AD,99,7,_Amb_WavesLake,0,0,0,0,AE,99,7,_Amb_WavesLake,0,0,0,0,AF,99,7,_Amb_WavesLake,0,0,0,0,AG,99,7,_Amb_OceanLight,0,0,0,0,AH,99,7,_Amb_OceanLight,0,0,0,0,AI,99,7,_Amb_OceanLight,0,0,0,0,AJ,99,7,_Amb_OceanLight,0,0,0,0,AK
 01000003=21,4,1,01000048,0,0,0,0,A,4,1,01000049,0,0,0,0,A,4,1,01000050,0,0,0,0,A,4,1,01000051,0,0,0,0,A,4,1,01000052,0,0,0,0,A,4,1,01000053,0,0,0,0,A,4,1,01000054,0,0,0,0,A,4,1,01000055,0,0,0,0,A,4,1,01000048,0,0,0,0,A,4,1,01000049,0,0,0,0,A,4,1,01000050,0,0,0,0,A,4,1,01000051,0,0,0,0,A,4,1,01000052,0,0,0,0,A,4,1,01000053,0,0,0,0,A,4,1,01000054,0,0,0,0,A,4,1,01000055,0,0,0,0,A,4,1,01000060,0,0,0,0,A,4,1,01000060,0,0,0,0,A,4,1,01000060,0,0,0,0,A,4,1,01000060,0,0,0,0,A,4,1,01000060,0,0,0,0,A
 01000004=13,99,7,_Amb_BirdsTemperate1,0,0,0,0,K,99,7,_Amb_BirdsTemperate1,0,0,0,0,L,99,7,_Amb_BirdsTemperate1,0,0,0,0,M,99,7,_Amb_BirdsTemperate1,0,0,0,0,N,99,7,_Amb_BirdsTemperate1,0,0,0,0,O,99,7,_Amb_BirdsTemperate2,0,0,0,0,P,99,7,_Amb_BirdsTemperate2,0,0,0,0,Q,99,7,_Amb_BirdsTemperate2,0,0,0,0,R,99,7,_Amb_BirdsTemperate2,0,0,0,0,S,99,7,_Amb_BirdsTemperate2,0,0,0,0,T,99,7,_Amb_BirdsPark,0,0,0,0,AA,99,7,_Amb_BirdsPark,0,0,0,0,AB,99,7,_Amb_BirdsPark,0,0,0,0,AC
+01000006=3,14,0,4475,0,0,0,0,A,14,0,4476,0,0,0,0,A,14,0,12,0,0,0,0,A
+01000008=3,14,0,4477,0,0,0,0,A,14,0,4478,0,0,0,0,A,14,0,12,0,0,0,0,A
 01000009=2,14,0,4477,0,0,0,0,A,14,0,4478,0,0,0,0,A
+01000011=3,14,0,4479,0,0,0,0,A,14,0,4480,0,0,0,0,A,14,0,12,0,0,0,0,A
+01000013=3,14,0,4481,0,0,0,0,A,14,0,4482,0,0,0,0,A,14,0,12,0,0,0,0,A
 01000019=2,14,0,4476,0,0,0,0,A,14,0,4475,0,0,0,0,A
 01000027=2,14,0,4475,0,0,0,0,A,14,0,4476,0,0,0,0,A
 01000035=2,14,0,4478,0,0,0,0,A,14,0,4477,0,0,0,0,A
@@ -18064,18 +18093,22 @@ MaxPlayer=8
 NewINIFormat=4
 
 [Events]
-01000000=1,13,0,1
-01000002=1,13,0,1
-01000003=1,13,0,1
-01000004=1,13,0,1
-01000009=1,13,0,0
-01000019=1,13,0,0
-01000027=1,13,0,0
-01000035=1,13,0,0
-01000038=1,13,0,0
-01000040=1,13,0,0
-01000042=1,13,0,0
-01000044=1,13,0,0
+01000000=1,8,0,1
+01000002=1,8,0,1
+01000003=1,8,0,1
+01000004=1,8,0,1
+01000006=1,8,0,0
+01000008=1,8,0,0
+01000009=1,8,0,0
+01000011=1,8,0,0
+01000013=1,8,0,0
+01000019=1,8,0,0
+01000027=1,8,0,0
+01000035=1,8,0,0
+01000038=1,8,0,0
+01000040=1,8,0,0
+01000042=1,8,0,0
+01000044=1,8,0,0
 
 [Infantry]
 0=Neutral,SNIPE,256,55,66,3,Guard,32,01000031,0,-1,0,1,0
@@ -19569,10 +19602,10 @@ LocalSize=6,8,83,82
 31=Neutral,CAOILD,256,115,160,64,None,1,0,1,0,0,None,None,None,0,0
 32=Neutral,CAOILD,256,82,160,64,None,1,0,1,0,0,None,None,None,0,0
 33=Neutral,CAOILD,256,160,82,64,None,1,0,1,0,0,None,None,None,0,0
-34=Neutral,GASPYSAT,256,23,100,64,None,1,0,1,0,0,None,None,None,0,0
-35=Neutral,GASPYSAT,256,100,23,64,None,1,0,1,0,0,None,None,None,0,0
-36=Neutral,GASPYSAT,256,100,177,64,None,1,0,1,0,0,None,None,None,0,0
-37=Neutral,GASPYSAT,256,177,100,64,None,1,0,1,0,0,None,None,None,0,0
+34=Neutral,GASPYSAT,256,23,100,64,01000007,1,0,1,0,0,None,None,None,0,0
+35=Neutral,GASPYSAT,256,100,23,64,01000010,1,0,1,0,0,None,None,None,0,0
+36=Neutral,GASPYSAT,256,100,177,64,01000014,1,0,1,0,0,None,None,None,0,0
+37=Neutral,GASPYSAT,256,177,100,64,01000012,1,0,1,0,0,None,None,None,0,0
 38=Neutral,CABHUT,256,65,141,64,None,1,0,1,0,0,None,None,None,0,0
 39=Neutral,CABHUT,256,56,133,64,None,1,0,1,0,0,None,None,None,0,0
 40=Neutral,CABUNK02,256,130,143,64,None,1,0,1,0,0,None,None,None,0,0
@@ -19649,6 +19682,10 @@ LocalSize=6,8,83,82
 [Tags]
 01000001=0,S1,01000004
 01000005=0,T,01000003
+01000007=0,01,01000006
+01000010=0,02,01000008
+01000012=0,03,01000011
+01000014=0,04,01000013
 01000015=0,3,01000009
 01000023=0,0,01000019
 01000031=0,1,01000027
@@ -20549,7 +20586,11 @@ LocalSize=6,8,83,82
 01000002=Arabs,<none>,S3,0,1,1,1,0
 01000003=Arabs,<none>,T,0,1,1,1,0
 01000004=Arabs,01000000,S1,0,1,1,1,0
+01000006=Arabs,<none>,01,0,1,1,1,0
+01000008=Arabs,<none>,02,0,1,1,1,0
 01000009=Arabs,<none>,3,0,1,1,1,0
+01000011=Arabs,<none>,03,0,1,1,1,0
+01000013=Arabs,<none>,04,0,1,1,1,0
 01000019=Arabs,<none>,0,0,1,1,1,0
 01000027=Arabs,<none>,1,0,1,1,1,0
 01000035=Arabs,<none>,2,0,1,1,1,0
